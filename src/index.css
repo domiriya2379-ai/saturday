@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-handwriting {
+    font-family: 'Caveat', cursive, sans-serif;
+  }
+  .font-playful {
+    font-family: 'Fredoka', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Perspective for 3D envelope */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Candle flame flicker */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 6px rgba(251, 146, 60, 0.9)) drop-shadow(0 0 12px rgba(245, 158, 11, 0.6));
+  }
+  25% {
+    transform: scale(1.08, 0.94) rotate(2deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(251, 146, 60, 1)) drop-shadow(0 0 16px rgba(245, 158, 11, 0.8));
+  }
+  50% {
+    transform: scale(0.95, 1.05) rotate(-2deg);
+    opacity: 0.88;
+    filter: drop-shadow(0 0 5px rgba(251, 146, 60, 0.8)) drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+  }
+  75% {
+    transform: scale(1.04, 0.98) rotate(1deg);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 9px rgba(251, 146, 60, 0.95)) drop-shadow(0 0 14px rgba(245, 158, 11, 0.7));
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 0.6s infinite alternate ease-in-out;
+  transform-origin: bottom center;
+}
+
+/* Smoke rise animation when candle blown out */
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0) scale(0.4);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-24px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+.animate-smoke {
+  animation: smokeRise 1.2s forwards ease-out;
+}
+
+/* Gentle pulse glow */
+@keyframes subtleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 25px currentColor);
+  }
+}
+
+.animate-glow {
+  animation: subtleGlow 2.5s infinite ease-in-out;
+}
